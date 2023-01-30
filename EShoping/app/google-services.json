@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "609063830577",
+    "project_id": "eshoping-fecca",
+    "storage_bucket": "eshoping-fecca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:609063830577:android:199fc454e65cf3fb614110",
+        "android_client_info": {
+          "package_name": "com.example.eshoping"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "609063830577-fbgugqqi3tmkaslqde33qj2l6835lbjm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBibHkDsCkAYcJ-uvrqSC6v67AebSnR708"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "609063830577-fbgugqqi3tmkaslqde33qj2l6835lbjm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
