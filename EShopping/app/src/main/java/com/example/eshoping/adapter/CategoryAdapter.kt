@@ -1,12 +1,14 @@
 package com.example.eshoping.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.eshoping.R
+import com.example.eshoping.activity.CategoryActivity
 import com.example.eshoping.databinding.LayoutCategoryItemBinding
 import com.example.eshoping.model.CategoryModel
 
@@ -23,6 +25,15 @@ class CategoryAdapter(var context : Context , val list : ArrayList<CategoryModel
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
         holder.binding.textView.text= list[position].cate
         Glide.with(context).load(list[position].img).into(holder.binding.imageView)
+
+        holder.itemView.setOnClickListener{
+            val intent = Intent(context, CategoryActivity::class.java)
+            intent.putExtra("cat",list[position].cate)
+            context.startActivity(intent)
+
+
+
+        }
     }
 
     override fun getItemCount(): Int {

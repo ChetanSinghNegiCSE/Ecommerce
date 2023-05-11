@@ -1,60 +1,64 @@
 package com.example.eshoping.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import com.example.eshoping.R
+import com.example.eshoping.activity.AddressActivity
+import com.example.eshoping.activity.CategoryActivity
+import com.example.eshoping.adapter.CartAdapter
+import com.example.eshoping.databinding.FragmentCartBinding
+import com.example.eshoping.roomdb.AppDatabase
+import com.example.eshoping.roomdb.ProductModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [CardFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class CartFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var binding : FragmentCartBinding
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cart, container, false)
+        binding = FragmentCartBinding.inflate(layoutInflater)
+
+        val preferences = requireContext().getSharedPreferences("info", AppCompatActivity.MODE_PRIVATE)
+        val editor = preferences.edit()
+        editor.putBoolean("isCart",false)
+        editor.apply()
+
+
+        val dao = AppDatabase.getInstance(requireContext()).productDao()
+
+        dao.getAllProducts().observe(requireActivity()){
+            binding.cardRecycler.adapter = CartAdapter(requireContext(), it)
+
+            totalCost(it)
+        }
+
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment CardFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            CartFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun totalCost(data: List<ProductModel>?) {
+        var total = 0
+        for(item in data!!){
+            total += item.productSp!!.toInt()
+        }
+
+        binding.textView12.text = "Total item in cart is ${data.size}"
+        binding.textView13.text = "Total Cost : $total"
+
+        binding.checkout.setOnClickListener {
+            val intent = Intent(context, AddressActivity::class.java)
+            intent.putExtra("totalCost",total)
+            startActivity(intent)
+        }
+
     }
+
 }

@@ -1,6 +1,7 @@
 package com.example.eshoping.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
+import com.example.eshoping.activity.ProductDetailsActivity
 import com.example.eshoping.databinding.LayoutProductItemBinding
 import com.example.eshoping.model.AddProductModel
 import java.util.ArrayList
@@ -37,5 +39,11 @@ class ProductAdapter (val context : Context , val list: ArrayList<AddProductMode
         holder.binding.textView4.text = data.productMrp
 
         holder.binding.button.text = data.productSp
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context, ProductDetailsActivity::class.java)
+            intent.putExtra("id",list[position].productID)
+            context.startActivity(intent)
+        }
     }
     }

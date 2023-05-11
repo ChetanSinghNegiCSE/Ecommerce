@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat.getCategory
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.eshoping.R
 import com.example.eshoping.adapter.CategoryAdapter
@@ -27,6 +29,15 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(layoutInflater)
+
+//        binding.button2.setOnc
+
+        val preferences = requireContext().getSharedPreferences("info", AppCompatActivity.MODE_PRIVATE)
+
+        if(preferences.getBoolean("isCart",false))
+            findNavController().navigate(R.id.action_homeFragment_to_cartFragment)
+
+
         getCategories()
         getProducts()
         getSliderImage()
