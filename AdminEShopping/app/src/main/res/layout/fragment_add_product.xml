@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.AddProductFragment">
+    tools:context=".fragments.AddProductFragment"
+    android:background="@drawable/images">
 
     <ProgressBar
         android:id="@+id/progressBar3"
@@ -34,14 +35,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:padding="10dp">
+                android:padding="10dp"
+               >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/Product_Name_edt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Product Name"
-                    android:inputType="text"/>
+                    android:inputType="text"
+                    android:background="#7E94D8F6"/>
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -56,7 +59,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Product Description"
-                    android:inputType="text"/>
+                    android:inputType="text"
+                    android:background="#7E94D8F6"/>
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -71,6 +75,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Product MRP"
+                    android:background="#7E94D8F6"
                     android:inputType="numberDecimal"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -86,6 +91,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Product SP"
+                    android:background="#7E94D8F6"
                     android:inputType="numberDecimal"/>
             </com.google.android.material.textfield.TextInputLayout>
         
@@ -94,7 +100,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:inputType="none"/>
+                android:inputType="none"
+                android:background="#7E94D8F6"/>
             
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/select_cover_img"

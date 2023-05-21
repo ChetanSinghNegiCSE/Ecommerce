@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
                 title = when(destination.id){
                     R.id.cartFragment ->  "My Cart"
                     R.id.moreFragment ->  "My Dashboard"
-                    else -> "E-Shopping"
+                    else -> "U.K. Cart"
                 }
             }
 

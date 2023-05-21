@@ -78,6 +78,8 @@ dependencies {
 
     implementation 'com.razorpay:checkout:1.6.26'
 
+    implementation 'com.google.android.material:material:1.9.0'
+
 
 
 }

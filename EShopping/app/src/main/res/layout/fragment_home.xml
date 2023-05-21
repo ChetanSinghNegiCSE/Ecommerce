@@ -30,7 +30,7 @@
             android:layout_height="match_parent"
             android:scaleType="centerInside"
             android:src="@drawable/home"
-            />
+            android:background="#B80606"/>
 
     </com.google.android.material.card.MaterialCardView>
 

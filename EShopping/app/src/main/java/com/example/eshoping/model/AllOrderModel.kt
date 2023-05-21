@@ -7,4 +7,6 @@ data class AllOrderModel(
     val status : String? = "",
     val productId : String? = "",
     val price : String? = "",
+    var img : String? = "",
+
 )

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.SliderFragment"
+    android:background="@drawable/images"
     android:padding="24dp">
 
 
@@ -12,7 +13,7 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:src="@drawable/ic_image"
+        android:src="@drawable/baseline_file_upload_24"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="24dp" />
 

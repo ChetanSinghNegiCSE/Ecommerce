@@ -5,7 +5,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="24dp"
-    tools:context=".fragments.HomeFragment">
+    android:gravity="center"
+    tools:context=".fragments.HomeFragment"
+    android:background="@drawable/bga">
 
     <Button
         android:id="@+id/button"

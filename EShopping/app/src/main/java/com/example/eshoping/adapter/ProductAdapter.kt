@@ -2,6 +2,7 @@ package com.example.eshoping.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import com.example.eshoping.activity.ProductDetailsActivity
 import com.example.eshoping.databinding.LayoutProductItemBinding
 import com.example.eshoping.model.AddProductModel
 import java.util.ArrayList
+import java.util.Currency
 
 class ProductAdapter (val context : Context , val list: ArrayList<AddProductModel>)
     : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
@@ -33,12 +35,14 @@ class ProductAdapter (val context : Context , val list: ArrayList<AddProductMode
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
     val data = list[position]
-      Glide.with(context).load(data.productCoverImg).into(holder.binding.imageView2)
+        val currencySymbol = Currency.getInstance("INR").symbol
+
+        Glide.with(context).load(data.productCoverImg).into(holder.binding.imageView2)
         holder.binding.textView2.text = data.productName
         holder.binding.textView3.text = data.productCategory
-        holder.binding.textView4.text = data.productMrp
-
-        holder.binding.button.text = data.productSp
+        holder.binding.textView4.text = currencySymbol+data.productMrp
+        holder.binding.textView4.paintFlags = holder.binding.textView4.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+        holder.binding.button.text= currencySymbol+data.productSp
 
         holder.itemView.setOnClickListener {
             val intent = Intent(context, ProductDetailsActivity::class.java)

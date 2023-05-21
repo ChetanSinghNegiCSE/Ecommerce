@@ -32,7 +32,7 @@ class CheckoutActivity : AppCompatActivity() , PaymentResultListener {
             options.put("name","U.K. Cart")
             options.put("description","Demoing Charges")
             //You can omit the image option to fetch the image from the dashboard
-            options.put("image","https://s3.amazonaws.com/rzp-mobile/images/rzp.jpg")
+            options.put("image","https://firebasestorage.googleapis.com/v0/b/eshoping-fecca.appspot.com/o/uk_cleanup.png?alt=media&token=69eca798-91f8-4419-ae8d-8e89d8d63a00")
             options.put("theme.color", "#FF5454")
             options.put("currency","INR")
 /*
@@ -82,11 +82,13 @@ class CheckoutActivity : AppCompatActivity() , PaymentResultListener {
 
                     saveData(it.getString("productName"),
                              it.getString("productSp"),
-                             productID)
+                             productID,
+                    it.getString("productCoverImg"))
+
                 }
     }
 
-    private fun saveData(name: String?, price: String?, productID: String) {
+    private fun saveData(name: String?, price: String?, productID: String ,img : String?) {
 
         val preferences = this.getSharedPreferences("user", MODE_PRIVATE)
         val data = hashMapOf<String, Any>()
@@ -95,6 +97,7 @@ class CheckoutActivity : AppCompatActivity() , PaymentResultListener {
         data["productId"]= productID
         data["status"] = "Ordered"
         data["userId"] =preferences.getString("number","")!!
+        data["img"]=img!!
 
         val firestore = Firebase.firestore.collection("allOrders")
         val key = firestore.document().id
